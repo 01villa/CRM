@@ -7,19 +7,14 @@ import java.util.*
 @Entity
 @Table(name = "invoice")
 class Invoice {
-
-    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(updatable = false)
+    @Id
     var id: Long? = null
-    @Column(nullable = false)
+    @Column(name = "code")
     var code: String? = null
-    @Column(nullable = false)
-    var createdAt: Date? = null
-    @Column(nullable = false, columnDefinition = "Decimal (5,2)")
+    var createdAt: LocalDate? = LocalDate.now()
     var total: Double? = null
-
     @ManyToOne
-    @JoinColumn(referencedColumnName = "id")
+    @JoinColumn(name = "client_id")
     var client: Client? = null
 }

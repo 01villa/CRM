@@ -5,16 +5,13 @@ import jakarta.persistence.*
 
 @Entity
 @Table(name = "client")
-class Client {
-
-    @Id
+class Client(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     @Column(updatable = false)
-    var id: Long? = null
-    @Column(unique = true, nullable = false)
-    var fullName: String? = null
-    @Column(nullable = false)
-    var age: Int? = null
-    @Column(nullable = false)
+    var id: Long? = null,
+    @Column(name = "full_name")
+    var fullName: String? = null,
+    var age: Int? = null,
     var address: String? = null
-}
+)

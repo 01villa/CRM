@@ -17,6 +17,24 @@ CREATE TABLE IF NOT EXISTS invoice (
     PRIMARY KEY (id),
     );
 
+CREATE TABLE IF NOT EXISTS lead (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255),
+    phone VARCHAR(50),
+    created_at DATE,
+    updated_at DATE
+    );
 
+
+CREATE TABLE IF NOT EXISTS activity (
+     id SERIAL PRIMARY KEY,
+     description TEXT,
+     scheduled_at DATE,
+    created_at DATE,
+     updated_at DATE,
+    lead_id INT NOT NULL,
+    FOREIGN KEY (lead_id) REFERENCES lead(id) ON DELETE CASCADE
+    );
 
 
